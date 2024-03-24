@@ -1,0 +1,4 @@
+.vscode
+*.swp
+**/obj
+**/*.out

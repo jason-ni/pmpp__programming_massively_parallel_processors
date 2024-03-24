@@ -9,10 +9,10 @@ pmpp__blas
 
 CFLAGS = -g -G --compiler-options -Wall
 
-INCLUDES = $(patsubst %,-I ../../%, $(DEPSNAMES))
+INCLUDES = $(patsubst %,-I ../%, $(DEPSNAMES))
 
 # List with all .cu files inside $(REPOSDIR)/<repoName>
-CUFILES = $(foreach dep,$(DEPSNAMES), $(wildcard ../../$(dep)/*.cu))
+CUFILES = $(foreach dep,$(DEPSNAMES), $(wildcard ../$(dep)/*.cu))
 
 # List with all .o paths
 OBJS = $(patsubst %.cu,%.o,$(CUFILES))
