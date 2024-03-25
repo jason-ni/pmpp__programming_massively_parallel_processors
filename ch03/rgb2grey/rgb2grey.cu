@@ -3,12 +3,12 @@
 
 #include "../../utils.h"
 
-__global__ void rgb2grey_kernel(unsigned char* red, unsigned char* green, unsigned char* blue, unsigned char* grey, int width, int height) {
-    int x = blockIdx.x * blockDim.x + threadIdx.x;
-    int y = blockIdx.y * blockDim.y + threadIdx.y;
-    int idx = y * width + x;
-    if (x < width && y < height) {
-        grey[idx] = (unsigned char)(0.299 * red[idx] + 0.587 * green[idx] + 0.114 * blue[idx]);
+__global__ void rgb2grey_kernel(unsigned char* red_d, unsigned char* green_d, unsigned char* blue_d, unsigned char* grey_d, int width, int height) {
+    int row = blockIdx.y * blockDim.y + threadIdx.y;
+    int col = blockIdx.x * blockDim.x + threadIdx.x;
+    int i = row * width + col;
+    if (col < width && row < height) {
+        grey_d[i] = red_d[i]*3/10 + green_d[i]*6/10 + blue_d[i]*1/10;
     }
 }
 
