@@ -1,0 +1,1 @@
+#define BLUR_SIZE 5
